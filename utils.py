@@ -7,19 +7,25 @@ m = 2
 b = 1   
 # y = 2x + 1
 
+def sign(n):
+    if n > 0:
+        return 1
+    else:
+        return -1
+
 def sample_points(num):
     points = list()
     for i in range(int(num/2)):
         x = random.randint(1,num)
         bias = random.randint(1,num*2)
         y = m * x + b + bias
-        label = np.sign(m * x + b - y)
+        label = sign(m * x + b - y)
         points.append([x, y, label])
 
         x = random.randint(1,num)
         bias = random.randint(1,num*2)
         y = m * x + b - bias
-        label = np.sign(m * x + b - y)
+        label = sign(m * x + b - y)
         points.append([x, y, label])
 
     random.shuffle(points)
@@ -38,8 +44,10 @@ def visual(samples,w=[]):
     if w != []:
         # w0 + w1x + w2y = 0
         # y = -w0/w2 - (w1/w2)x
+        if(w[2]==0):
+            print('Warning: w[2]=0 -> w = ', w)
         x = lx
-        y = -w[0]/w[2] - (w[1]/w[2]*x)
+        y = -w[0]/w[2] - (w[1]/w[2])*x
         plt.plot(x, y, color='gold', label='pla-answer')
     plt.legend()
     plt.show()
