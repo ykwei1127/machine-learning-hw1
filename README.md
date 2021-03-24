@@ -7,7 +7,7 @@
 
 ## Run code
 - utils.py is used to generate sample points and visualize answer
-- q2 and q3 complete the requirements of the question
+- q2.py and q3.py complete the requirements of the question
 
 ```
 python q2.py
