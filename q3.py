@@ -12,6 +12,15 @@ def count_error(samples, w):
     print('error point number = ', count)
     return count
 
+def find_error(samples, w):
+    error_points = []
+    for x in samples:
+        x = [1] + x
+        x = np.array(x)
+        if sign(np.dot(w,x[:-1])) != x[-1]:
+            error_points.append(x)
+    return error_points
+
 def pocket_algorithm(samples):
     w = np.zeros(3,dtype=int)
     best_w = w
@@ -19,24 +28,16 @@ def pocket_algorithm(samples):
     while True:
         while_loop = while_loop + 1
         error_points = []
-        for x in samples:
-            x = [1] + x
-            x = np.array(x)
-            if sign(np.dot(w,x[:-1])) != x[-1]:
-                error_points.append(x)
+        error_points = find_error(samples, w)
         if error_points == []:
             break
-        print(error_points)
         x = random.choice(error_points)
-        print(x)
-        print(best_w)
         w = w + x[:-1]*x[-1]
-        print(w)
         if count_error(samples,w) < count_error(samples,best_w):
             best_w = w
             print('update best w = ',best_w)
             # visual(samples,best_w)
-    print('while loop = ',while_loop)
+    print('while loop = ', while_loop, '\niteration = ', while_loop-1)
     return best_w
 
 
