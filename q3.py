@@ -9,7 +9,7 @@ def count_error(samples, w):
         x = np.array(x)
         if sign(np.dot(w,x[:-1])) != x[-1]:
             count = count + 1
-    print('error point number = ', count)
+    # print('error point number = ', count)
     return count
 
 def find_error(samples, w):
@@ -43,7 +43,7 @@ def pocket_algorithm(samples):
 
 samples = sample_points(10)
 # visual(samples)
-# w = PLA(samples)
-# visual(samples,w)
+w = PLA(samples)
+visual(samples,w)
 w = pocket_algorithm(samples)
 visual(samples,w)
