@@ -1,4 +1,5 @@
 import numpy as np
+import time
 from utils import *
 from q2 import PLA
 
@@ -35,15 +36,28 @@ def pocket_algorithm(samples):
         w = w + x[:-1]*x[-1]
         if count_error(samples,w) < count_error(samples,best_w):
             best_w = w
-            print('update best w = ',best_w)
+            # print('update best w = ',best_w)
             # visual(samples,best_w)
     print('while loop = ', while_loop, '\niteration = ', while_loop-1)
     return best_w
 
-
-samples = sample_points(10)
+samples = sample_points(2000)
 # visual(samples)
-w = PLA(samples)
-visual(samples,w)
-w = pocket_algorithm(samples)
-visual(samples,w)
+print('------------------PLA------------------')
+time_start = time.time() # start timing
+w_pla = PLA(samples)
+time_end = time.time()    # end timing
+time_c= time_end - time_start   # execution time
+print('execution time = ', time_c, 's')
+# visual(samples,w_pla)
+
+print('------------Pocket Algorithm------------')
+time_start = time.time()
+w_pocket = pocket_algorithm(samples)
+time_end = time.time()
+time_c= time_end - time_start
+print('execution time = ', time_c, 's')
+# visual(samples,w_pocket)
+
+visual(samples,w_pla)
+visual(samples,w_pocket)
