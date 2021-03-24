@@ -38,9 +38,9 @@ def visual(samples,w=[]):
     plt.plot(lx, ly, color='g', label='groundtruth')
     for i in range(len(samples)):
         if samples[i][-1] == 1:
-            plt.plot(samples[i][0], samples[i][1], 'o', color='blue')
+            plt.plot(samples[i][0], samples[i][1], 'o', markersize=3, color='blue')
         else:
-            plt.plot(samples[i][0], samples[i][1], 'o', color='red')
+            plt.plot(samples[i][0], samples[i][1], 'o', markersize=3, color='red')
     if w != []:
         # w0 + w1x + w2y = 0
         # y = -w0/w2 - (w1/w2)x
