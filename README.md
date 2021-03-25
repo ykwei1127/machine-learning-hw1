@@ -10,6 +10,9 @@
 - q2.py and q3.py complete the requirements of the question
 
 ```
+python q1.py
+```
+```
 python q2.py
 ```
 ```
