@@ -7,7 +7,7 @@
 
 ## Run code
 - utils.py is used to generate sample points and visualize answer
-- q2.py and q3.py complete the requirements of the question
+- q2.py and q3.py complete the requirements of the question. q2.py doesn't calculate the average numbers of iteration when PLA halts. We should calculate it by execute three times manually.
 
 ```
 python q1.py
